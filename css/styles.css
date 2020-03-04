@@ -1,0 +1,93 @@
+#T {
+  color: #050;
+}
+#F {
+  color: #800;
+}
+.result {
+  display: none;
+}
+.wrong {
+  margin: 20px auto;
+  font-size: xx-large;
+  color: darkred;
+  width: 30px;
+}
+.correct {
+  margin: 20px auto;
+  font-size: xx-large;
+  color: darkgreen;
+  width: 30px;
+}
+.timer {
+  width: 120px;
+  margin: auto;
+  background-color: lightblue;
+}
+body {
+  background-color: lightgray !important;
+}
+h1 {
+  color: #1e80fe;
+  font-family: Agency FB, Courier;
+  font-size: 110px;
+}
+h3 {
+  display: none;
+  text-align: justify;
+  font-size: 24px;
+}
+h3 span {
+  font-size: medium;
+}
+h4 {
+  display: none;
+  font-size: 30px;
+  margin-top: 20px;
+}
+h5 {
+  margin-top: 6px;
+  font-size: 28px;
+}
+h6 {
+  display: none;
+  font-size: 24px;
+  color: #000;
+}
+.colomn-title {
+  text-align: center;
+  font-family: Comic Sans, Script;
+  color: #251;
+}
+button {
+  size: 100px;
+  margin: 10px;
+  width: 200px;
+  padding: 10px;
+  font-size: 30px;
+  font-family: Impact;
+}
+p {
+  color: darkred;
+  font-size: 40px;
+}
+#timeout {
+  color: darkred;
+  font-family: Agency FB, Courier;
+  font-size: 110px;
+  margin: 40 px;
+}
+#retryButton {
+  display: none;
+  background-color: #f90;
+  width: 190px;
+  padding: 9px;
+  color: black;
+  border-color: #f90;
+  border-width: 2px;
+}
+
+.fill {
+  height: 100%;
+  min-height: 250px;
+}

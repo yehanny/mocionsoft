@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mocion Soft Frontend Challenge</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+  </head>
+  <body>
+    <div class="text-center">
+      <h1><b>QUIZ</b> <br /></h1>
+
+      <h4 id="score">/10</h4>
+    </div>
+    <div class="container-fluid py-5">
+      <div class="row">
+        <div id="quiz" class="fill col-md-12 px-5 py-3 text-center"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <label>
+              <button id="T" class="btn btn-success" name="choise">True</button>
+            </label>
+            <label>
+              <button id="F" class="btn btn-danger" name="choise">False</button>
+            </label>
+            <div class="timer">
+              <p id="time"></p>
+            </div>
+            <h6 id="timeout">
+              <u
+                ><strong><abbr title="You failed!!">TIMEOUT!</abbr></strong></u
+              >
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button id="retryButton">Try again?</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
