@@ -1,6 +1,5 @@
 /* Store HTML references */
 const quizHolder = document.getElementById("quiz");
-const resultsHolder = document.getElementById("results");
 const submitButton = document.getElementById("submit");
 const api =
   "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean";
@@ -11,6 +10,7 @@ const api =
     .then(data => {
       let items = data.results;
       var solutions = [];
+      var answered = [];
 
       function buildQuiz() {
         /* Store HTML output */
@@ -24,12 +24,14 @@ const api =
           output.push(
             `
             <h3 id="ask${i + 1}" class="question">
-            <span>Category: ${question.category}</span> | 
-            <span>Difficulty: ${question.difficulty}</span><br>
+            <span>Category: ${question.category}</span> 
+            <span> | Difficulty: ${question.difficulty}</span><br>
             <span class="result correct" id="correct${i}">+</span>
             <span class="result wrong" id="wrong${i}">-</span>
             <b>${i + 1}: </b>
             ${question.question}
+            <span class="answered"> Your answer: <span id="ans${i +
+              1}"></span></span>
             </h3>
             `
           );
@@ -48,7 +50,7 @@ const api =
       $("#ask1").show();
       var correctPoints = 0;
       var counter = 20;
-      var arr = [];
+      // var arr = [];
       var tot = "";
       var num = 1;
 
@@ -66,12 +68,11 @@ const api =
           $("#questionMark").hide();
           $("#timeout").show();
           $("#retryButton").show();
-          sfondo("black");
         } //set timeout
       }, 1000); //set interval
       //false section start
       $("#F").click(function() {
-        arr.push("False");
+        answered.push("False");
         $("#ans" + num).text("False");
         counter = 20;
         num += 1;
@@ -85,9 +86,10 @@ const api =
           $("#time").hide();
           $("h3").show();
           $("h4").show();
+          $(".answered").show();
           $("#retryButton").show();
-          for (var i = 0; i < arr.length; i++) {
-            if (arr[i] === solutions[i]) {
+          for (var i = 0; i < answered.length; i++) {
+            if (answered[i] === solutions[i]) {
               $("#correct" + i).show();
               correctPoints += 1;
             } //if show correct solutions
@@ -100,7 +102,7 @@ const api =
       });
       //true section start
       $("#T").click(function() {
-        arr.push("True");
+        answered.push("True");
         $("#ans" + num).text("True");
         num += 1;
         tot = "ask" + num;
@@ -114,9 +116,10 @@ const api =
           $("#time").hide();
           $("h3").show();
           $("h4").show();
+          $(".answered").show();
           $("#retryButton").show();
-          for (var i = 0; i < arr.length; i++) {
-            if (arr[i] === solutions[i]) {
+          for (var i = 0; i < answered.length; i++) {
+            if (answered[i] === solutions[i]) {
               $("#correct" + i).show();
               correctPoints += 1;
             } //if show correct solutions
@@ -126,7 +129,9 @@ const api =
             $("#score").text("Score " + correctPoints + " /10");
           } //for
         } // else complete
+        console.log(answered);
       }); //V click
+
       $("#retryButton").click(function() {
         location.reload(false);
       });
