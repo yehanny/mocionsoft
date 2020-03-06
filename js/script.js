@@ -8,14 +8,15 @@ const api =
   fetch(api)
     .then(response => response.json())
     .then(data => {
+      const output = [];
       let items = data.results;
       var solutions = [];
       var answered = [];
+      var correct_answer = [];
+      var question = [];
 
       function buildQuiz() {
         /* Store HTML output */
-        const output = [];
-        var question = [];
 
         for (let i = 0; i < items.length; i++) {
           question = items[i];
@@ -30,8 +31,10 @@ const api =
             <span class="result wrong" id="wrong${i}">-</span>
             <b>${i + 1}: </b>
             ${question.question}
-            <span class="answered"> Your answer: <span id="ans${i +
-              1}"></span></span>
+            <div class="answered">
+              Your answer: <span id="ans${i + 1}"></span> | 
+              Correct answer: <span id="correct_answer${i}"></span>
+            </div>
             </h3>
             `
           );
@@ -50,7 +53,6 @@ const api =
       $("#ask1").show();
       var correctPoints = 0;
       var counter = 20;
-      // var arr = [];
       var tot = "";
       var num = 1;
 
@@ -89,6 +91,7 @@ const api =
           $(".answered").show();
           $("#retryButton").show();
           for (var i = 0; i < answered.length; i++) {
+            $("#correct_answer" + i).text(solutions[i]);
             if (answered[i] === solutions[i]) {
               $("#correct" + i).show();
               correctPoints += 1;
@@ -119,6 +122,7 @@ const api =
           $(".answered").show();
           $("#retryButton").show();
           for (var i = 0; i < answered.length; i++) {
+            $("#correct_answer" + i).text(solutions[i]);
             if (answered[i] === solutions[i]) {
               $("#correct" + i).show();
               correctPoints += 1;
@@ -129,8 +133,7 @@ const api =
             $("#score").text("Score " + correctPoints + " /10");
           } //for
         } // else complete
-        console.log(answered);
-      }); //V click
+      }); //T click
 
       $("#retryButton").click(function() {
         location.reload(false);

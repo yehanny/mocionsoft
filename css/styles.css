@@ -89,6 +89,7 @@ p {
 }
 
 .answered {
+  font-size: medium;
   display: none;
   color: darkblue;
 }
